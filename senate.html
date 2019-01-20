@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>TGIF | Senate</title>
+    <meta name="description" content="Transparent Government In Fact">
+    <meta name="author" content="MTC">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- implementation for all devices plus @viewport in  main.css-->
+
+
+    <!--- BOOTSTRAP ContDelNet --->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+
+
+
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row header">
+        </div>
+        <nav class="navbar navbar-default shadow">
+        </nav>
+
+
+
+        <!--Table container-->
+        <div class="main cyan">
+            <!--- class="container main" --->
+            <div class="row no-margin">
+                <div class="page-header">
+                    <h2>Senators</h2>
+                </div>
+                <p class="col col-md-8 10pad">First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
+
+            </div>
+            <!-- end .row -->
+
+
+            <div class="table-responsive">
+                <section id="filter-by-party" onchange="fillTable()">
+                    <h4>U.S. Senators 2016</h4>
+                    <h5><b>Filter By Party:</b>
+                        <input type="checkbox" name="R" label="rep"><label> Republicans</label>
+                        <input type="checkbox" name="D" label="dem"><label> Democrats</label>
+                        <input type="checkbox" name="I" label="indie"><label>  Independents</label>
+                        <input type="button" value="Go Filter!" onclick="checkboxValues()" hidden>
+                        <input type="button" value="Test It!" onclick="fillTable()" hidden>
+                    </h5>
+                </section>
+                <section id="filter-by-state">
+                    <h5>
+                        <b>State Filtering:</b>
+
+                        <select id="dropdown-state" onchange="fillTable()">
+                            <option value="ALL" selected="selected">State</option>
+                            <option value="AL">ALABAMA</option>
+                            <option value="AK">ALASKA</option>
+                            <option value="AS">AMERICAN SAMOA</option>
+                            <option value="AZ">ARIZONA</option>
+                            <option value="AR">ARKANSAS</option>
+                            <option value="CA">CALIFORNIA</option>
+                            <option value="CO">COLORADO</option>
+                            <option value="CT">CONNECTICUT</option>
+                            <option value="DE">DELAWARE</option>
+                            <option value="DC">DISTRICT OF COLUMBIA</option>
+                            <option value="FM">FEDERATED STATES OF MICRONESIA</option>
+                            <option value="FL">FLORIDA</option>
+                            <option value="GA">GEORGIA</option>
+                            <option value="GU">GUAM</option>
+                            <option value="HI">HAWAII</option>
+                            <option value="ID">IDAHO</option>
+                            <option value="IL">ILLINOIS</option>
+                            <option value="IN">INDIANA</option>
+                            <option value="IA">IOWA</option>
+                            <option value="KS">KANSAS</option>
+                            <option value="KY">KENTUCKY</option>
+                            <option value="LA">LOUISIANA</option>
+                            <option value="ME">MAINE</option>
+                            <option value="MH">MARSHALL ISLANDS</option>
+                            <option value="MD">MARYLAND</option>
+                            <option value="MA">MASSACHUSETTS</option>
+                            <option value="MI">MICHIGAN</option>
+                            <option value="MN">MINNESOTA</option>
+                            <option value="MS">MISSISSIPPI</option>
+                            <option value="MO">MISSOURI</option>
+                            <option value="MT">MONTANA</option>
+                            <option value="NE">NEBRASKA</option>
+                            <option value="NV">NEVADA</option>
+                            <option value="NH">NEW HAMPSHIRE</option>
+                            <option value="NJ">NEW JERSEY</option>
+                            <option value="NM">NEW MEXICO</option>
+                            <option value="NY">NEW YORK</option>
+                            <option value="NC">NORTH CAROLINA</option>
+                            <option value="ND">NORTH DAKOTA</option>
+                            <option value="MP">NORTHERN MARIANA ISLANDS</option>
+                            <option value="OH">OHIO</option>
+                            <option value="OK">OKLAHOMA</option>
+                            <option value="OR">OREGON</option>
+                            <option value="PW">PALAU</option>
+                            <option value="PA">PENNSYLVANIA</option>
+                            <option value="PR">PUERTO RICO</option>
+                            <option value="RI">RHODE ISLAND</option>
+                            <option value="SC">SOUTH CAROLINA</option>
+                            <option value="SD">SOUTH DAKOTA</option>
+                            <option value="TN">TENNESSEE</option>
+                            <option value="TX">TEXAS</option>
+                            <option value="UT">UTAH</option>
+                            <option value="VT">VERMONT</option>
+                            <option value="VI">VIRGIN ISLANDS</option>
+                            <option value="VA">VIRGINIA</option>
+                            <option value="WA">WASHINGTON</option>
+                            <option value="WV">WEST VIRGINIA</option>
+                            <option value="WI">WISCONSIN</option>
+                            <option value="WY">WYOMING</option>
+                            </select>
+                    </h5>
+                </section>
+
+                <table id="senate-data" class="table table-striped">
+                    <!--- THE TABLE TO BE FILLED ---->
+                </table>
+            </div>
+        </div>
+        <!-- end .main --->
+        <footer>
+            <div class="foot shadow">
+                <p>© 2016 TGIF | All Rights Reserved</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- end container -->
+    <script src="assets/js/113th-senate.js"></script>
+
+    <script src="assets/js/filter-senate.js"></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- moustache.js -->
+    <script src="assets/mustache.js-master/mustache.js"></script>
+
+    <!-- header.js -->
+    <script type="text/javascript" src="assets/js/header.js"></script>
+</body>
+
+</html>

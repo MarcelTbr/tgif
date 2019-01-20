@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>TGIF | Senate Party Loyalty</title>
+    <meta name="description" content="Transparent Government In Fact">
+    <meta name="author" content="MTC">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- implementation for all devices plus @viewport in  main.css-->
+    <!--- BOOTSTRAP ContDelNet --->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row header">
+        </div>
+        <nav class="navbar navbar-default shadow">
+        </nav>
+
+        <!--Table container-->
+        <div class="main cyan">
+            <!--- class="container main" --->
+            <div class="row no-margin" hidden>
+                <div class="page-header">
+                    <h2>Senators</h2>
+                </div>
+                <p class="col col-md-8 10pad">First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
+
+            </div>
+            <!--            BEFORE: div.row not "hidden"-->
+            <!-- end .row -->
+
+
+            <div class="table-responsive" hidden>
+                <section id="filter-by-party" onchange="fillTable()">
+                    <h4>U.S. Senators 2016</h4>
+                    <h5><b>Filter By Party:</b>
+                        <input type="checkbox" name="R" label="rep"><label> Republicans</label>
+                        <input type="checkbox" name="D" label="dem"><label> Democrats</label>
+                        <input type="checkbox" name="I" label="indie"><label>  Independents</label>
+                        <input type="button" value="Go Filter!" onclick="checkboxValues()" hidden>
+                        <input type="button" value="Test It!" onclick="fillTable()" hidden>
+                    </h5>
+                </section>
+                <section id="filter-by-state">
+                    <h5>
+                        <b>State Filtering:</b>
+
+                        <select id="dropdown-state" onchange="fillTable()">
+                            <option value="ALL" selected="selected">State</option>
+                            <option value="AL">ALABAMA</option>
+                            <option value="AK">ALASKA</option>
+                            <option value="AS">AMERICAN SAMOA</option>
+                            <option value="AZ">ARIZONA</option>
+                            <option value="AR">ARKANSAS</option>
+                            <option value="CA">CALIFORNIA</option>
+                            <option value="CO">COLORADO</option>
+                            <option value="CT">CONNECTICUT</option>
+                            <option value="DE">DELAWARE</option>
+                            <option value="DC">DISTRICT OF COLUMBIA</option>
+                            <option value="FM">FEDERATED STATES OF MICRONESIA</option>
+                            <option value="FL">FLORIDA</option>
+                            <option value="GA">GEORGIA</option>
+                            <option value="GU">GUAM</option>
+                            <option value="HI">HAWAII</option>
+                            <option value="ID">IDAHO</option>
+                            <option value="IL">ILLINOIS</option>
+                            <option value="IN">INDIANA</option>
+                            <option value="IA">IOWA</option>
+                            <option value="KS">KANSAS</option>
+                            <option value="KY">KENTUCKY</option>
+                            <option value="LA">LOUISIANA</option>
+                            <option value="ME">MAINE</option>
+                            <option value="MH">MARSHALL ISLANDS</option>
+                            <option value="MD">MARYLAND</option>
+                            <option value="MA">MASSACHUSETTS</option>
+                            <option value="MI">MICHIGAN</option>
+                            <option value="MN">MINNESOTA</option>
+                            <option value="MS">MISSISSIPPI</option>
+                            <option value="MO">MISSOURI</option>
+                            <option value="MT">MONTANA</option>
+                            <option value="NE">NEBRASKA</option>
+                            <option value="NV">NEVADA</option>
+                            <option value="NH">NEW HAMPSHIRE</option>
+                            <option value="NJ">NEW JERSEY</option>
+                            <option value="NM">NEW MEXICO</option>
+                            <option value="NY">NEW YORK</option>
+                            <option value="NC">NORTH CAROLINA</option>
+                            <option value="ND">NORTH DAKOTA</option>
+                            <option value="MP">NORTHERN MARIANA ISLANDS</option>
+                            <option value="OH">OHIO</option>
+                            <option value="OK">OKLAHOMA</option>
+                            <option value="OR">OREGON</option>
+                            <option value="PW">PALAU</option>
+                            <option value="PA">PENNSYLVANIA</option>
+                            <option value="PR">PUERTO RICO</option>
+                            <option value="RI">RHODE ISLAND</option>
+                            <option value="SC">SOUTH CAROLINA</option>
+                            <option value="SD">SOUTH DAKOTA</option>
+                            <option value="TN">TENNESSEE</option>
+                            <option value="TX">TEXAS</option>
+                            <option value="UT">UTAH</option>
+                            <option value="VT">VERMONT</option>
+                            <option value="VI">VIRGIN ISLANDS</option>
+                            <option value="VA">VIRGINIA</option>
+                            <option value="WA">WASHINGTON</option>
+                            <option value="WV">WEST VIRGINIA</option>
+                            <option value="WI">WISCONSIN</option>
+                            <option value="WY">WYOMING</option>
+                            </select>
+                    </h5>
+                </section>
+
+                <table id="senate-data" class="table table-striped">
+                    <!--- THE TABLE TO BE FILLED ---->
+                </table>
+            </div>
+            <!--            BEFORE: div.table-responsive not "hidden"-->
+
+            <!--Table container-->
+            <div>
+                <h2>Party Loyalty</h2>
+                <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
+
+                <h2>Senate at a glance</h2>
+                <table id="senate_glance" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Party</th>
+                            <th>Number of Reps</th>
+                            <th>% Voted with Prty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Republican</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>Democrat</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>Independent</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Least Loyal (Bottom 10% of Party)</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Number Party Votes</th>
+                            <th>% Party Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--
+                        <tr>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>-->
+                    </tbody>
+                </table>
+
+                <h2>Most Loyal (Top 10% of Party)</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Number Party Votes</th>
+                            <th>% Party Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="most-loyal-table">
+
+
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <!-- end .main --->
+        <footer>
+            <div class="foot shadow">
+                <p>© 2016 TGIF | All Rights Reserved</p>
+            </div>
+        </footer>
+    </div>
+    <!-- end container -->
+
+    <script src="assets/js/113th-senate.js"></script>
+
+    <!--        <script src="assets/js/filter-senate.js"></script>-->
+
+    <!--    jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!--    Moustache library & Code-->
+
+    <!--        <script src='https://github.com/janl/mustache.js/blob/master/mustache.js' type="text/html"></script>-->
+    <!--        Note: "github.com/.../mustache.js" | this is the Moustache file to download not a CDN!-->
+
+    <!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/oj.mustache/0.7.2/oj.mustache.js" type="application/javascript" ></script>-->
+
+    <!--        <script src='https://github.com/janl/mustache.js/blob/master/mustache.js' type="application/javascript"></script>-->
+
+    <script src="assets/mustache.js-master/mustache.js"></script>
+
+    <!--    Making: #member-template ============= | buildTableHtmlWithRowTemplate(members) -->
+
+    <script id="member-template" type="text/html">
+        <tr class="member-row">
+            <!--                .member-row is for guidance-->
+            <td>{{first}}</td>
+            <td>{{second}}</td>
+            <td>{{third}}</td>
+        </tr>
+    </script>
+
+    <script src="assets/js/moustaching.js"></script>
+    <!--    Statistics Calculations & Object-->
+    <!--        <script id="statistics_object" src="assets/js/statistics-obj.js"></script>-->
+    <script>
+        var statistics = {
+
+            total_dems: 0,
+            total_reps: 0,
+            total_indies: 0,
+            votes_with_dems: 0,
+            votes_with_reps: 0,
+            votes_with_indies: 0,
+            top_without_party_voters: [],
+            top_with_party_voters: [],
+            top_most_votes_missed: {},
+            top_least_votes_missed: {}
+        }
+
+    </script>
+
+    <script id="statistics_calc" src="assets/js/stat-scripts.js"></script>
+
+    <!--    Moustache template-->
+
+    <!--
+    <script id="most-loyal-template" type="text/html">
+
+      {{#members}}
+
+              <tr>
+                  <td>{{first_name}}</td>
+                  <td>{{number_of_party_votes}}</td>
+                  <td>{{votes_with_party_pct}}</td>
+              </tr>
+
+      {{/members}}
+
+    </script>
+    -->
+
+    <!--    Bootstrap | Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- moustache.js -->
+    <script src="assets/mustache.js-master/mustache.js"></script>
+
+    <!-- header.js -->
+    <script type="text/javascript" src="assets/js/header.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+/* Main CSS */
+
+
+
+#logo{
+    
+/*    background-color: aqua;*/
+
+    margin: 10px 0;
+    
+}
+
+#logo a{
+    display:block;
+    width: 80px;
+    margin: 0 auto;
+    background-color: aquamarine;
+}
+
+.header{
+    
+    position:relative;
+}
+#title{
+    
+    text-align:center;
+}
+
+#title span{
+    font-size: 1.9em;
+    margin-left: 10px;
+}
+
+#e-mail {
+    text-align: center;
+/*    background-color: aquamarine;*/
+    margin: 10px auto;
+/*    vertical-align: middle;*/
+    margin-top: 12px;
+    opacity: 0.75;
+}   
+
+
+@media screen and (min-width: 1200px) {
+    
+    .header {
+        margin: 30px 0 15px;
+    }
+    #e-mail{
+        right:1px;
+        position: absolute;
+        top: 60%;
+        transform: translateY(-100%);
+        font-size: 1.4em;
+       
+    }
+    
+    #title{
+        
+        text-align: left;
+        height: 100px;
+        padding: 20px;
+        Font-size: 1.8em;
+    }
+}
+
+.main {
+   
+    text-align: justify;
+}
+
+
+
+.main p {
+    padding: 15px 0px; 
+    line-height: 1.75;
+    Font-size: 120%;
+
+   
+/*    background-color: aquamarine;*/
+    
+}
+
+.table-responsive {
+    
+/*
+    background-color: aquamarine;
+   
+*/
+    
+    
+}
+
+.table td, .table th {
+    text-align: center;
+}
+
+.table tr td:first-child, .table tr th:first-child {
+/*    background-color: aqua;*/
+    text-align: left;
+}
+
+
+footer .foot{
+    margin-top: 10px;
+/*    background-color:#25B7D2;*/
+    background-color:#0D84AB;
+    height: 100px;
+    text-align: center;
+    border-radius: 7px;
+    
+    
+    
+
+}
+
+footer .foot p {  /*  FIX-pending */
+   
+    width:100%;
+/*    color:#0D84AB;*/
+    color:#25B7D2;
+    padding: 40px 0px;
+    opacity: 0.7;
+    
+    
+}
+
+.capitol-wrp {
+    
+    position: relative;
+    
+    
+}
+
+#capitol{
+        width: 300px;
+        margin: 0 auto;
+    padding: 30px 0;
+    
+}
+
+#collapseTwo {
+    
+    padding: 0px 20px;
+}
+.cyan {
+    
+/*        background-color: aqua;*/
+}
+
+.no-margin {
+    
+    margin: 0px;
+}
+
+.shadow {
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,0.24);
+/*    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);*/
+}
+
+.panel-title a:focus {
+    text-decoration: none;
+    color: #0D84AB;
+    
+}
