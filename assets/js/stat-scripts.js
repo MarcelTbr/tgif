@@ -1,4 +1,4 @@
-//======== stat-scripts.js=======
+/* ======== stat-scripts.js======= */
 
 $(function () {
 
@@ -17,11 +17,11 @@ $(function () {
 
         restOfCode(data) //callback
     }
-
+    // A) get raw data
     function getJSON() {
         var url = 'https://nytimes-ubiqum.herokuapp.com/congress/113/senate'
 
-
+                        // B) Apply Code if data is present otherwise show error.
         $.getJSON(url).done(doIt).fail(function () {
 
             console.log("Sorry! JSON file not available at the moment... We are working on it.");
@@ -35,13 +35,13 @@ $(function () {
     getJSON()
 
 
-    //console.log(data.status)  >> FAIL  
+    //console.log(data.status)  >> FAIL
 
     function restOfCode(data) {
 
         var data_copy = copyDataJSON(data)
 
-        //var statistics = getStatistics()    
+        //var statistics = getStatistics()
 
         function getStatistics() {
 
@@ -64,7 +64,7 @@ $(function () {
             return copy
         } //new copy of the JSON data to store in a variable
 
-        //Making: FUNCTION CALLING  
+        //Making: FUNCTION CALLING
         var party_totals = partyTotals(data);
 
         var votes_with_party_obj = withPartyVotes(party_totals, data)
@@ -130,7 +130,7 @@ $(function () {
 
         //TODO: pass function calls as variables
 
-        //Input: empty stat JSON, full 113th Senate data JASON
+        //Input: empty stat JSON, full 113th Senate data JSON
         //Output: fills stat JSON's totals
         function partyTotals(data_json) {
 
@@ -142,7 +142,7 @@ $(function () {
                 I: 0
             }
 
-            //loop NYT json data (watch out for senator/house linked scripts) 
+            //loop NYT json data (watch out for senator/house linked scripts)
 
             var members = data_json.results[0].members
 
@@ -176,7 +176,7 @@ $(function () {
             return totals_obj
         }
 
-        //Input: half-empty stat JSON, full 113th Senate data JASON
+        //Input: half-empty stat JSON, full 113th Senate data JSON
         function withPartyVotes(totals_obj, data_json) { //TODO: rethink this structure. What output do we need?? We need one value for every member.
 
             //TODO: withPartyVotes(...) | convert memberVote%strings to numbers
@@ -214,7 +214,7 @@ $(function () {
                         votes_with_party_count.withReps_count += vwp_to_num;
                         break;
                     case ("I"):
-                        console.log("found an Independent!"); //FEEDBACK: Indie Joke
+                        //console.log("found an Independent!"); //FEEDBACK: Indie Joke
                         votes_with_party_count.withIndies_count += vwp_to_num; //not needed but still
                 }
 
@@ -223,8 +223,6 @@ $(function () {
             }
 
             votes_with_party.withDems = (votes_with_party_count.withDems_count / totals_obj.D)
-            console.log("==========TESTING=======")
-            console.log(votes_with_party.withDems)
             votes_with_party.withReps = (votes_with_party_count.withReps_count / totals_obj.R)
             votes_with_party.withIndies = (votes_with_party_count.withIndies_count / totals_obj.I)
 
@@ -323,7 +321,7 @@ $(function () {
 
                     // console.log("i: " + i + "; j:" + j + "; k: " + k ) //FEEDBACK on sliceByMixed() indexes
                     //console.log("count: " + parseFloat(sorted_array[i].missed_votes) + "; length: " + length)
-                    //console.log("length before j++: " + length) 
+                    //console.log("length before j++: " + length)
                     j++
                     k-- // this is the counter to know if we reached the minimum items we are filtering for
 
@@ -346,30 +344,32 @@ $(function () {
         }
 
         //MAKING Declaration of ============makeMemberPartyVotesArray(obj_array)======= push by groups of same sort_value then check if array is full enough
-        function makeMemberPartyVotesArray(obj_array) {
+        function makeMemberPartyVotesArray(members_array) {
 
-            var output_array = []
-
-            for (var i = 0; i < obj_array.length; i++) {
-
-                var w_party_pct = +obj_array[i].votes_with_party_pct
-                var total_votes = +obj_array[i].total_votes
-                var missed_votes = +obj_array[i].missed_votes
-
-                var member_p_votes = calcMemberPartyVotes(w_party_pct, total_votes, missed_votes)
-
-                output_array.push(member_p_votes)
-
-
-            }
-
-            return output_array
-        }
-
-        function calcMemberPartyVotes(w_party_pct, total_votes, missed_votes) {
+          function calcMemberPartyVotes(w_party_pct, total_votes, missed_votes) {
             var w_party_votes = Math.round(w_party_pct * (total_votes - missed_votes) / 100)
             return w_party_votes
+          }
+
+          var output_array = []
+
+          for (var i = 0; i < members_array.length; i++) {
+
+            var w_party_pct = +members_array[i].votes_with_party_pct
+            var total_votes = +members_array[i].total_votes
+            var missed_votes = +members_array[i].missed_votes
+
+            var member_p_votes = calcMemberPartyVotes(w_party_pct, total_votes, missed_votes)
+
+            output_array.push(member_p_votes)
+
+
+          }
+
+          return output_array
         }
+
+
 
         //NOTE: this function converts strings to numbers!!
         function sortBy(sort_value, data_json) {
@@ -381,10 +381,10 @@ $(function () {
 
             /*sorted_array = members.map(function (member) {
 
-               
+
                 return parseFloat(member[sort_value])
-                
-                
+
+
 
             })*/
 
@@ -472,7 +472,7 @@ $(function () {
 
             //put the results into the statistics JSON
 
-            //Note: #1 partyTotals(...) | fillStatsObj(...) 
+            //Note: #1 partyTotals(...) | fillStatsObj(...)
             stat_json.total_dems = totals_obj.D
             stat_json.total_reps = totals_obj.R
             stat_json.total_indies = totals_obj.I
@@ -575,7 +575,7 @@ $(function () {
 
 
                 }
-                console.log("fillRanking() triggered!")
+                //console.log("fillRanking() triggered!")
             }
 
         }
@@ -612,7 +612,7 @@ $(function () {
         }
 
 
-        //FEEDBACK: ===== Feedback Functions =======    
+        //FEEDBACK: ===== Feedback Functions =======
 
         function fillTableFeedback() {
             //console.log("top_missed_votes_sliced =")
@@ -657,4 +657,4 @@ $(function () {
 
     //restOfCode(data) >> FAIL
 
-});
+  });
