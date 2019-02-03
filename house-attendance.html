@@ -28,8 +28,9 @@
 
 
         <div class="main cyan">
-
-
+            <div id="preloader">
+            <img src="assets/images/preloader.gif">
+            </div>
             <div>
                 <h2>Attendance</h2>
 
@@ -120,11 +121,14 @@
 
     <!--    Statistics Calculations & Object-->
 
-            <script id="statistics_calc" src="assets/js/house-stat-scripts.js"></script>
+    <script id="statistics_object" src="assets/js/statistics-obj.js" ></script>
+    <script id="statistics_calc" src="assets/js/stat-scripts.js"></script>
+    <script>
+      $(function(){
+        getJSON('house', '#house_glance');
 
-
-            <script id="statistics_object" src="assets/js/statistics-obj.js" ></script>
-
+      });
+    </script>
 
     <!--    Bootstrap | Latest compiled JavaScript -->
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

@@ -1,13 +1,21 @@
 /* Main CSS */
 
+#preloader {
+  display: none;
+  position: fixed;
+  top: 50%;
+  width: 64px;
+  height: 64px;
+  left: 50%;
 
+}
 
 #logo{
-    
+
 /*    background-color: aqua;*/
 
     margin: 10px 0;
-    
+
 }
 
 #logo a{
@@ -18,11 +26,11 @@
 }
 
 .header{
-    
+
     position:relative;
 }
 #title{
-    
+
     text-align:center;
 }
 
@@ -38,11 +46,11 @@
 /*    vertical-align: middle;*/
     margin-top: 12px;
     opacity: 0.75;
-}   
+}
 
 
 @media screen and (min-width: 1200px) {
-    
+
     .header {
         margin: 30px 0 15px;
     }
@@ -52,11 +60,11 @@
         top: 60%;
         transform: translateY(-100%);
         font-size: 1.4em;
-       
+
     }
-    
+
     #title{
-        
+
         text-align: left;
         height: 100px;
         padding: 20px;
@@ -65,30 +73,30 @@
 }
 
 .main {
-   
+
     text-align: justify;
 }
 
 
 
 .main p {
-    padding: 15px 0px; 
+    padding: 15px 0px;
     line-height: 1.75;
     Font-size: 120%;
 
-   
+
 /*    background-color: aquamarine;*/
-    
+
 }
 
 .table-responsive {
-    
+
 /*
     background-color: aquamarine;
-   
+
 */
-    
-    
+
+
 }
 
 .table td, .table th {
@@ -108,48 +116,48 @@ footer .foot{
     height: 100px;
     text-align: center;
     border-radius: 7px;
-    
-    
-    
+
+
+
 
 }
 
 footer .foot p {  /*  FIX-pending */
-   
+
     width:100%;
 /*    color:#0D84AB;*/
     color:#25B7D2;
     padding: 40px 0px;
     opacity: 0.7;
-    
-    
+
+
 }
 
 .capitol-wrp {
-    
+
     position: relative;
-    
-    
+
+
 }
 
 #capitol{
         width: 300px;
         margin: 0 auto;
     padding: 30px 0;
-    
+
 }
 
 #collapseTwo {
-    
+
     padding: 0px 20px;
 }
 .cyan {
-    
+
 /*        background-color: aqua;*/
 }
 
 .no-margin {
-    
+
     margin: 0px;
 }
 
@@ -162,5 +170,5 @@ footer .foot p {  /*  FIX-pending */
 .panel-title a:focus {
     text-decoration: none;
     color: #0D84AB;
-    
+
 }
