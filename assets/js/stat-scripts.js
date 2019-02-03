@@ -148,7 +148,7 @@
       var length = members_array.length * pct * 0.01;
       var output_array = [];
 
-      for (var i = 0; i < length-1; i++) {
+      for (var i = 0; i < length; i++) {
         var current = members_array[i];
 
         output_array.push(current);

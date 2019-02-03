@@ -1,26 +1,26 @@
 //================ moustaching.js ========
 
-
+// a file just for reference of mustaching techniques
 
 function jQueryingRows(people, table){
-    
+
     people.forEach(function(person){
-    
+
     var row = $('<tr>')
         .append('<td>').text(person.first_name)
         .append('<td>').text(person.number_of_party_votes) .append('<td>').text(person.votes_with_party_pct)
-    
+
     table.append(row)
-    
+
     })
 }
 
 
 //Todo: people is data.results[0].members
 function renderingTableWithMoustache(people){
-    
-   
-    
+
+
+
     var html = "";
 
     var template = $('#member-template').html();
@@ -31,17 +31,17 @@ function renderingTableWithMoustache(people){
     });
 
     return html;
-    
-    
+
+
 }
 
 
 
 
 function fillTable(content){
-    
+
     //document.getElementById('most-loyal-table').innerHTML = content
-    
+
     $('#most-loyal-table').html(content)
 }
 
@@ -80,9 +80,9 @@ function buildTableHtmlWithRowTemplate(people) { // people is a parameter
 
     for (var i = 0; i < people.length; i++) {
 
-        var person = people[i]; // just for fun, here we're using a classic 'for' loop
-        console.log("person "+i) //FEEDBACK
-        console.log(person.first_name)
+        var person = people[i];
+          console.log("person "+i) //FEEDBACK
+          console.log(person.first_name)
         var mustacheData = {
             first: person.first_name,
             second: person.number_of_party_votes,
@@ -95,8 +95,8 @@ function buildTableHtmlWithRowTemplate(people) { // people is a parameter
     }
 
     window.alert("buildTableHtmlWithRowTemplate(members) run!!")
-    
+
     return html;
 }
 
-fillTable(buildTableHtmlWithRowTemplate(members))
+//fillTable(buildTableHtmlWithRowTemplate(members))
