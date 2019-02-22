@@ -26,6 +26,34 @@
         <nav class="navbar navbar-default shadow">
         </nav>
 
+        <!-- micromodal -->
+        <div id="modal-1" aria-hidden="true" class="modal">
+
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal_container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
+
+              <header>
+                <h2 id="modal-1-title">
+                  Modal Title
+                </h2>
+
+                <button aria-label="Close modal" data-custom-close="modal-1">X</button>
+              </header>
+
+              <div id="modal-1-content" class="modal_content">
+                <p id="legend"></p>
+                <div id="graph">
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
         <!--Table container-->
         <div class="main cyan">
           <div id="preloader">
@@ -66,6 +94,7 @@
                 </table>
 
                 <h2>Least Loyal (Bottom 10% of Party)</h2>
+                <button data-custom-open="modal-1" id="least-loyal-house" class="graph-button">Least Loyal Graph</button>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -80,6 +109,7 @@
                 </table>
 
                 <h2>Most Loyal (Top 10% of Party)</h2>
+                <button data-custom-open="modal-1" id="most-loyal-house" class="graph-button">Most Loyal Graph</button>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -139,6 +169,19 @@
 
     });
     </script>
+
+    <!-- d3 js -->
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/data-visualization.js"></script>
+
+
+    <!-- micromodal -->
+    <script src="assets/node_modules/micromodal/dist/micromodal.min.js"></script>
+
+    <!-- modal scripts -->
+    <script src="assets/js/modal-scripts.js"></script>
 </body>
 
 </html>

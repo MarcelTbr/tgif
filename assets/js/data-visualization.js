@@ -1,51 +1,62 @@
 function doGraph(event){
 
 
-
   $("#modal-1-title").html(event.data.title);
-
+  $("#legend").html(event.data.legend);
   var data;
   var graph_id = event.data.id;
 
-  alert(graph_id);
 
   var factor, spacing, colWidth, xFactor, fontSize, marginLeft, textSkew;
+
+  function senateConfig(){
+    spacing = 25;
+    colWidth = 25;
+    xFactor = 50;
+    fontSize = 15;
+    marginLeft = 50;
+    textSkew = -30;
+  }
+  function houseConfig(){
+    spacing = 10;
+    colWidth = 10;
+    xFactor = 15;
+    fontSize = 8;
+    marginLeft = 30;
+    textSkew = -90;
+  };
   if (graph_id == "most-engaged"){
     dataset = graphData.most_engaged;
     factor = 100;
-    spacing = 25;
-    colWidth = 25;
-    xFactor = 50;
-    fontSize = 15;
-    marginLeft = 50;
-    textSkew = -30;
+    senateConfig();
   } else if (graph_id == "least-engaged"){
     dataset = graphData.least_engaged;
     factor = 10;
-    spacing = 25;
-    colWidth = 25;
-    xFactor = 50;
-    fontSize = 15;
-    marginLeft = 50;
-    textSkew = -30;
+    senateConfig();
   } else if ( graph_id == "most-engaged-house"){
     dataset = graphData.most_engaged;
     factor = 50;
-    spacing = 10;
-    colWidth = 10;
-    xFactor = 15;
-    fontSize = 8;
-    marginLeft = 30;
-    textSkew = -90;
+    houseConfig();
   } else if (graph_id == "least-engaged-house"){
     dataset = graphData.least_engaged;
     factor = 2;
-    spacing = 10;
-    colWidth = 10;
-    xFactor = 15;
-    fontSize = 8;
-    marginLeft = 30;
-    textSkew = -90;
+    houseConfig();
+  } else if ( graph_id == "most-loyal" ) {
+    dataset = graphData.most_loyal;
+    factor = 3;
+    senateConfig();
+  } else if ( graph_id == "least-loyal" ) {
+    dataset = graphData.least_loyal;
+    factor = 3;
+    senateConfig();
+  }else if ( graph_id == "most-loyal-house"){
+    dataset = graphData.most_loyal;
+    factor = 3;
+    houseConfig();
+  } else if (graph_id == "least-loyal-house"){
+    dataset = graphData.least_loyal;
+    factor = 3;
+    houseConfig();
   }
 
 

@@ -1,5 +1,6 @@
 /* ====== loyalty-scripts ====== */
 
+
 function showData(element_to_fill) {
   return function(data){
     console.log(data.results[0].members[0])
@@ -33,7 +34,9 @@ function showData(element_to_fill) {
 
 
     //fill ...at a Glance
-    processData(data, element_to_fill);
+    graphData = processData(data, element_to_fill);
+    console.info("graphData", graphData)
+
 
     var most_loyal = getMostLoyal(members, 10);
     var least_loyal = getLeastLoyal(members, 10);

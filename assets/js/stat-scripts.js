@@ -305,6 +305,29 @@
       data.most_engaged = most_engaged;
       data.least_engaged = least_engaged;
 
+      var most_loyal = [];
+      var least_loyal = [];
+      var source_array = stats.top_with_party_voters
+      for(var i = 0; i < source_array.length; i++){
+
+        var entry_most = {};
+        var candidate_most = stats.top_with_party_voters[i];
+        entry_most.vwp = +candidate_most.votes_with_party_pct;
+        entry_most.name =  candidate_most.first_name + " " + candidate_most.last_name;
+        most_loyal.push(entry_most);
+
+        var entry_least = {};
+        var candidate_least = stats.top_without_party_voters[i];
+        entry_least.vwp = +candidate_least.votes_with_party_pct;
+        entry_least.name =  candidate_least.first_name + " " + candidate_least.last_name;
+        least_loyal.push(entry_least);
+
+      }
+
+      data.most_loyal = most_loyal;
+      data.least_loyal = least_loyal;
+
+        //console.log(data);
         return data;
     }
 
