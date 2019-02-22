@@ -19,12 +19,42 @@
 </head>
 
 <body>
+
+
+
     <div class="container">
 
         <div class="row header">
         </div>
         <nav class="navbar navbar-default shadow">
         </nav>
+
+        <!-- micromodal -->
+        <div id="modal-1" aria-hidden="true" class="modal">
+
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal_container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
+
+              <header>
+                <h2 id="modal-1-title">
+                  Modal Title
+                </h2>
+
+                <button aria-label="Close modal" data-custom-close="modal-1">X</button>
+              </header>
+
+              <div id="modal-1-content" class="modal_content">
+
+                <div id="graph">
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
 
         <div class="main cyan">
           <div id="preloader">
@@ -67,6 +97,7 @@
               </table>
 
               <h2>Least Engaged (Bottom 10% Attendance)</h2>
+              <button data-custom-open="modal-1" id="least-engaged" class="graph-button">Least Engaged Graph</button>
               <table class="table table-striped" id="bttm_attndnce">
                 <thead>
                   <tr>
@@ -80,7 +111,8 @@
                 </tbody>
               </table>
 
-              <h2>Most Engaged (Top 10% Attendance)</h2>
+              <h2>Most Engaged (Top 10% Attendance) </h2>
+              <button data-custom-open="modal-1" id="most-engaged" class="graph-button">Most Engaged Graph</button>
               <table class="table table-striped" id="top_attndnce">
                 <thead>
                   <tr>
@@ -139,6 +171,24 @@
 
     <!-- header.js -->
     <script type="text/javascript" src="assets/js/header.js"></script>
+
+    <!-- d3 js -->
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/data-visualization.js"></script>
+
+
+    <!-- micromodal -->
+    <script src="assets/node_modules/micromodal/dist/micromodal.min.js"></script>
+
+    <!-- modal scripts -->
+    <script src="assets/js/modal-scripts.js"></script>
+
+    <!-- browserify bundle -->
+    <!-- <script src="assets/js/bundle.js"></script> -->
+
+
 
 </body>
 

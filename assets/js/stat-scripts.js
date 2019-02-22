@@ -1,10 +1,15 @@
 /* stat-scripts.js */
 
+  var graphData;
+
+
   function showData(element_to_fill) {
     return function(data){
       console.log(data.results[0].members[0])
       console.log(data.status)
-      processData(data, element_to_fill) //callback
+      graphData = processData(data, element_to_fill) //callback
+
+      console.info("graphData", graphData);
     };
   }
   // A) get raw data
@@ -135,6 +140,20 @@
         return sorted_array
     }
 
+    function sortBySpecial(sort_value, array) {
+
+        var sorted_array = new Array;
+
+        sorted_array = array.sort(function (a, b) {
+
+            return +a[sort_value] - +b[sort_value];
+        })
+        //console.log("====== SORTED by " + sort_value + " =====");
+        //console.log(sorted_array);
+        return sorted_array
+    }
+
+
     function reverseArray(input) {
         var ret = new Array;
         for (var i = input.length - 1; i >= 0; i--) {
@@ -172,8 +191,8 @@
         stat_json.votes_with_reps = +votes_with_party.withReps.toFixed(2);
         stat_json.votes_with_indies = +votes_with_party.withIndies.toFixed(2);
 
-        stat_json.top_most_votes_missed = top_missed_votes_sliced;
-        stat_json.top_least_votes_missed = bottom_missed_votes_sliced;
+        stat_json.top_most_votes_missed =  top_missed_votes_sliced
+        stat_json.top_least_votes_missed = sortBySpecial("missed_votes_pct", bottom_missed_votes_sliced);
 
         stat_json.top_with_party_voters = top_with_party_voters;
         stat_json.top_without_party_voters = top_without_party_voters;
@@ -260,5 +279,37 @@
     statistics = fillStatsObj(statistics, party_totals, votes_with_party_obj, top_missed_votes_sliced, bottom_missed_votes_sliced, top_with_party_voters, top_without_party_voters);
     //fill tables with stats from statistics object
     JSONtoTable(statistics, element_to_fill);
+
+    function makeGraphObject(stats) {
+
+      var data = {};
+      var most_engaged = [];
+      var least_engaged = [];
+      var source_array = stats.top_least_votes_missed;
+      for(var i = 0; i < source_array.length; i++){
+
+        var entry_most = {};
+        var candidate_most = stats.top_least_votes_missed[i];
+        entry_most.vwp = +candidate_most.missed_votes_pct;
+        entry_most.name =  candidate_most.first_name + " " + candidate_most.last_name;
+        most_engaged.push(entry_most);
+
+        var entry_least = {};
+        var candidate_least = stats.top_most_votes_missed[i];
+        entry_least.vwp = +candidate_least.missed_votes_pct;
+        entry_least.name =  candidate_least.first_name + " " + candidate_least.last_name;
+        least_engaged.push(entry_least);
+
+      }
+
+      data.most_engaged = most_engaged;
+      data.least_engaged = least_engaged;
+
+        return data;
+    }
+
+
+    var graphObject = makeGraphObject(statistics);
+
+    return graphObject;
   }
-// });
